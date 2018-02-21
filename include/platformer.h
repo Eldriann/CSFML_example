@@ -20,6 +20,12 @@
 
 #define STARTING_SCENE "game"
 
+#define PLAYER_TEXTURE "assets/sprites/player.png"
+#define PLAYER_ANIMATION_SPEED 30
+#define PLAYER_ANIMATION_SIZE 32
+#define PLAYER_ANIMATION_NB_FRAME 3
+#define PLAYER_SPEED 128 /* in pixel per seconds */
+
 /**
 ** \brief Create and return a new engine, will also create a new window
 **
@@ -40,5 +46,14 @@ sf_scene_t *create_game_scene(sf_engine_t *engine);
 ** @param engine the engine to load to
 */
 void load_all_scenes(sf_engine_t *engine);
+
+/**
+** \brief Create a player prefab and return it
+*/
+gameobject_t *create_prefab_player(sf_engine_t *engine);
+/**
+** \brief Updater for the player, will be run each frame
+*/
+int player_updater(gameobject_t *player, int delta_time);
 
 #endif /* !__PLATFORMER_H_ */

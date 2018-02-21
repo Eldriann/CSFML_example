@@ -10,7 +10,9 @@ SRC_DIR		=	$(realpath src)
 SRC_FILES	=	main.c						\
 			create_engine.c					\
 			game_scene.c					\
-			load_scenes.c
+			load_scenes.c					\
+			create_prefab_player.c				\
+			player_updaters.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
