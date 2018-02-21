@@ -13,6 +13,7 @@
 #include "my_sfml.h"
 #include "platformer.h"
 
+/* Check if the DISPLAY variable (used by CSFML) exist */
 static int has_display_vars(char **env)
 {
 	char *key = "DISPLAY";
@@ -30,6 +31,7 @@ static int has_display_vars(char **env)
 	return (0);
 }
 
+/* This function set the *window to a new window */
 static int create_window(sfRenderWindow **window)
 {
 	*window = sfRenderWindow_create((sfVideoMode){WINDOW_X, WINDOW_Y, 32},\
@@ -42,6 +44,15 @@ WINDOW_NAME, sfClose, NULL);
 	return (0);
 }
 
+/* Create and initialize a new window and an engine */
+/*
+** I also modified:
+** -lib/mysfml/include/my_sfml_core.h to not display the debug log
+** -lib/mysfml/include/my_sfml_physics.h to change the gravity force
+** to change the gravity force i could also modify the gravity force
+** in the current physic engine but changing the macro ensure that gravity is
+** the same between scenes.
+*/
 sf_engine_t *create_new_engine(char **env)
 {
 	sf_engine_t *engine = NULL;

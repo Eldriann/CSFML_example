@@ -17,7 +17,10 @@
 
 /* --------------------------------DEFINE-------------------------------- */
 
-#define DEBUG_MSG_ACTIVE 1
+/*
+** I modified this macro to remove debug log (from 1 to 0)
+*/
+#define DEBUG_MSG_ACTIVE 0
 
 #define MSG_MY_SFML_MALLOC "[ERROR] Malloc failed!\n"
 #define MSG_MY_SFML_ERR_NULL "[ERROR] Pointer given was NULL!\n"

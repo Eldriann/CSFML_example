@@ -18,11 +18,27 @@
 
 #define FPS_LIMIT 120
 
+#define STARTING_SCENE "game"
+
 /**
 ** \brief Create and return a new engine, will also create a new window
 **
 ** @param env the environnement (to check for the DISPLAY variable)
 */
 sf_engine_t *create_new_engine(char **env);
+
+/**
+** \brief Create the game scene
+**
+** @param engine the engine to add too
+*/
+sf_scene_t *create_game_scene(sf_engine_t *engine);
+
+/**
+** \brief Load all scenes and switch to the STARTING_SCENE
+**
+** @param engine the engine to load to
+*/
+void load_all_scenes(sf_engine_t *engine);
 
 #endif /* !__PLATFORMER_H_ */

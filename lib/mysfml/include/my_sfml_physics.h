@@ -22,7 +22,11 @@
 #define HITBOX_TEX "assets/sprites/hitbox.png"
 #define DISPLAY_HITBOX 1
 
-#define GRAVITY_FORCE 0
+/*
+** I changed the gravity force to 60 to have gravity in the scene (from 0 to 60)
+** Why 60? because it works well with my jump.
+*/
+#define GRAVITY_FORCE 60
 /* ------------------------------END-DEFINE------------------------------ */
 
 /* ----------------------------PHYSICS-ENGINE---------------------------- */
