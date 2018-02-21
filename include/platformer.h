@@ -21,7 +21,7 @@
 #define STARTING_SCENE "game"
 
 #define PLAYER_TEXTURE "assets/sprites/player.png"
-#define PLAYER_ANIMATION_SPEED 30
+#define PLAYER_ANIMATION_SPEED 64
 #define PLAYER_ANIMATION_SIZE 32
 #define PLAYER_ANIMATION_NB_FRAME 3
 #define PLAYER_SPEED 128 /* in pixel per seconds */

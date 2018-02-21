@@ -8,6 +8,7 @@
 /* File created the 21/02/2018 at 18:39:28 by julian.frabel@epitech.eu */
 
 #include "my_sfml.h"
+#include "platformer.h"
 
 /*
 ** Here the data pointer of the scene that can be used to transfer
@@ -29,6 +30,7 @@ int load_game_scene(sf_engine_t *engine, void *data)
 	if (engine == NULL)
 		return (84);
 	engine->initialize_physic_state(engine);
+	create_prefab_player(engine);
 	return (0);
 }
 

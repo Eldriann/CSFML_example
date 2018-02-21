@@ -17,12 +17,15 @@ static int updater_player_animation(gameobject_t *player, int delta_time)
 	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
 	sf_transform_t *tr = get_component(player, TRANSFORM);
 	sf_rigidbody_2d_t *rb = get_component(player, RIGIDBODY_2D);
+	int frames_passed = 0;
 
 	if (rb->speed.x == 0 && rb->speed.y == 0)
 		return (0);
 	anim->timer += delta_time;
 	if (anim->timer >= anim->speed) {
-		anim->view_rect.left += anim->view_rect.width;
+		frames_passed = (int)(anim->timer / anim->speed);
+		anim->view_rect.left += (anim->view_rect.width * frames_passed);
+		anim->timer -= (anim->speed * frames_passed);
 		if (anim->view_rect.left >= anim->max_rect.left)
 			anim->view_rect.left = 0;
 		sfSprite_setTextureRect(anim->sprite, anim->view_rect);
