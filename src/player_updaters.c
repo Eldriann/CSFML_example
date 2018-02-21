@@ -7,6 +7,7 @@
 
 /* File created the 21/02/2018 at 19:35:57 by julian.frabel@epitech.eu */
 
+#include <stdlib.h>
 #include <stdbool.h>
 #include "my_sfml.h"
 #include "platformer.h"
@@ -54,6 +55,25 @@ int player_updater(gameobject_t *player, int delta_time)
 	return (0);
 }
 
+static int is_grounded(sf_engine_t *engine, gameobject_t *player)
+{
+	int nb_collisions = 0;
+	sf_collider_2d_t *col = get_component(player, COLLIDER_2D);
+	sf_transform_t *tr = get_component(player, TRANSFORM);
+	sfIntRect below_player;
+
+	if (col == NULL)
+		return (0);
+	below_player = col->hitbox;
+	below_player.left += tr->position.x;
+	below_player.top += tr->position.y + 1;
+	/* We get the number of collisions but the objects that collide with do not interess us so we free the array*/
+	free(engine->get_collisions_rect(engine, below_player, &nb_collisions, player));
+	if (nb_collisions)
+		return (1);
+	return (0);
+}
+
 /*
 ** Make the player jump
 */
@@ -64,5 +84,6 @@ void do_player_jump(sf_engine_t *engine)
 
 	if (rb == NULL)
 		return;
-	rb->speed.y = -PLAYER_JUMP_FORCE;
+	if (is_grounded(engine, player_go))
+		rb->speed.y = -PLAYER_JUMP_FORCE;
 }

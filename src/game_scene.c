@@ -7,6 +7,7 @@
 
 /* File created the 21/02/2018 at 18:39:28 by julian.frabel@epitech.eu */
 
+#include <stdbool.h>
 #include "my_sfml.h"
 #include "platformer.h"
 
@@ -39,6 +40,7 @@ int load_game_scene(sf_engine_t *engine, void *data)
 int loop_game_scene(sf_engine_t *engine, void *data)
 {
 	sfEvent evt;
+	static bool has_jumped = false;
 
 	(void)data;
 	if (engine == NULL)
@@ -46,8 +48,12 @@ int loop_game_scene(sf_engine_t *engine, void *data)
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
-		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeySpace)
+		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeySpace && !has_jumped) {
 			do_player_jump(engine);
+			has_jumped = true;
+		}
+		if (evt.type == sfEvtKeyReleased && evt.key.code == sfKeySpace)
+			has_jumped = false;
 	}
 	return (0);
 }
