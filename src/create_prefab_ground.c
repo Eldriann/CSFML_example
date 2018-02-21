@@ -13,13 +13,13 @@
 
 static int add_components(gameobject_t *ground)
 {
-	if (ground->add_component(ground, TRANSFORM))
+	if (ground->add_component(ground, TRANSFORM) == NULL)
 		return (84);
-	if (ground->add_component(ground, COLLIDER_2D))
+	if (ground->add_component(ground, COLLIDER_2D) == NULL)
 		return (84);
-	if (ground->add_component(ground, RIGIDBODY_2D))
+	if (ground->add_component(ground, RIGIDBODY_2D) == NULL)
 		return (84);
-	if (ground->add_component(ground, ANIMATION_2D))
+	if (ground->add_component(ground, ANIMATION_2D) == NULL)
 		return (84);
 	return (0);
 }

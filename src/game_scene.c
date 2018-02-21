@@ -31,6 +31,7 @@ int load_game_scene(sf_engine_t *engine, void *data)
 		return (84);
 	engine->initialize_physic_state(engine);
 	create_prefab_player(engine);
+	create_prefab_ground(engine, (sfIntRect){0, 568, 800, 32});
 	return (0);
 }
 
