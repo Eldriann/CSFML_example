@@ -38,14 +38,16 @@ int load_game_scene(sf_engine_t *engine, void *data)
 /* Function called each frame when the scene is loaded */
 int loop_game_scene(sf_engine_t *engine, void *data)
 {
-	sfEvent event;
+	sfEvent evt;
 
 	(void)data;
 	if (engine == NULL)
 		return (84);
-	while (sfRenderWindow_pollEvent(engine->window, &event)) {
-		if (event.type == sfEvtClosed)
+	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
+		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
+		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeySpace)
+			do_player_jump(engine);
 	}
 	return (0);
 }

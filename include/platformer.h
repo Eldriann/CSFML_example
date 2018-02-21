@@ -25,6 +25,7 @@
 #define PLAYER_ANIMATION_SIZE 32
 #define PLAYER_ANIMATION_NB_FRAME 3
 #define PLAYER_SPEED 128 /* in pixel per seconds */
+#define PLAYER_JUMP_FORCE 400 /* in pixel per seconds */
 
 #define GROUND_TEXTURE "assets/sprites/ground.png"
 #define GROUND_TEXTURE_SIZE 32
@@ -58,6 +59,10 @@ gameobject_t *create_prefab_player(sf_engine_t *engine);
 ** \brief Updater for the player, will be run each frame
 */
 int player_updater(gameobject_t *player, int delta_time);
+/**
+** \brief Make the player jump
+*/
+void do_player_jump(sf_engine_t *engine);
 
 /**
 ** \brief Create a ground gameobject at the requested positions

@@ -53,3 +53,16 @@ int player_updater(gameobject_t *player, int delta_time)
 	updater_player_movement(player);
 	return (0);
 }
+
+/*
+** Make the player jump
+*/
+void do_player_jump(sf_engine_t *engine)
+{
+	gameobject_t *player_go = engine->get_gameobject(engine, "player");
+	sf_rigidbody_2d_t *rb = get_component(player_go, RIGIDBODY_2D);
+
+	if (rb == NULL)
+		return;
+	rb->speed.y = -PLAYER_JUMP_FORCE;
+}
