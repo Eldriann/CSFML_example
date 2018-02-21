@@ -12,7 +12,8 @@ SRC_FILES	=	main.c						\
 			game_scene.c					\
 			load_scenes.c					\
 			create_prefab_player.c				\
-			player_updaters.c
+			player_updaters.c				\
+			create_prefab_ground.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
