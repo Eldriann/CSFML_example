@@ -23,7 +23,7 @@
 ** or the scene won't be able to use physics.
 ** (if you reset a scene you need to call it again)
 */
-static int load_game_scene(sf_engine_t *engine, void *data)
+int load_game_scene(sf_engine_t *engine, void *data)
 {
 	(void)data;
 	if (engine == NULL)
@@ -33,7 +33,7 @@ static int load_game_scene(sf_engine_t *engine, void *data)
 }
 
 /* Function called each frame when the scene is loaded */
-static int loop_game_scene(sf_engine_t *engine, void *data)
+int loop_game_scene(sf_engine_t *engine, void *data)
 {
 	sfEvent event;
 
@@ -52,7 +52,7 @@ static int loop_game_scene(sf_engine_t *engine, void *data)
 ** If you do not call the reset scene the next time the scene is loaded
 ** all the old objects will remain at their place in their state.
 */
-static int unload_game_scene(sf_engine_t *engine, void *data)
+int unload_game_scene(sf_engine_t *engine, void *data)
 {
 	(void)data;
 	reset_scene(engine->current_scene);
